@@ -326,7 +326,7 @@ class SiStackedLayout(SiLayoutV):
                 target_page = page
                 break
         if target_page is None:
-            raise ValueError('没有指定的选项卡名：{}'.format(pagename))
+            raise ValueError('No tab name specified: {}'.format(pagename))
         target_page.addItem(obj)
 
     def resizeEvent(self, event):

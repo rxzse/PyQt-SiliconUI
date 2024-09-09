@@ -41,7 +41,7 @@ class DarkColorGroup(SiColorGroup):
 
         self.assign(SiColor.MENU_BG, "#332E38")
 
-        # 标题相关
+        # Title related
         self.assign(SiColor.TITLE_INDICATOR, "#c58bc2")
         self.assign(SiColor.TITLE_HIGHLIGHT, "#52324E")
 

@@ -14,8 +14,8 @@ from siui.gui.color_group import SiColorGroup
 
 class ABCButton(QPushButton):
     """
-    抽象按钮控件\n
-    提供点击、按下、松开的信号和色彩动画
+    Abstract button control\n
+    Provide click, press, release signals and color animations
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -56,17 +56,18 @@ class ABCButton(QPushButton):
 
     def setAttachmentShifting(self, x, y):
         """
-        设置被绑定部件偏离中心的像素数，偏移量将直接与其坐标相加作为最终位置
-        :param x: 横坐标偏移多少像素
-        :param y: 纵坐标偏移多少像素
+        Set the number of pixels that the bound component deviates from the center. 
+        The offset will be directly added to its coordinates as the final position
+        :param x: How many pixels does the horizontal axis shift?
+        :param y: How many pixels to offset the vertical axis
         :return:
         """
         self.attachment_shifting = numpy.array([x, y])
 
     def setAttachment(self, widget):
         """
-        设置绑定部件。绑定部件会被设为按钮的子控件，并显示在按钮的正中央
-        :param widget: 部件
+        Set the binding component. The binding component will be set as a subcontrol of the button and displayed in the center of the button
+        :param widget: widget
         """
         # 删除旧的绑定部件
         self.attachment_.deleteLater()
@@ -77,8 +78,8 @@ class ABCButton(QPushButton):
 
     def attachment(self):
         """
-        返回被绑定的部件
-        :return: 被绑定部件
+        Returns the bound component
+        :return: Bound components
         """
         return self.attachment_
 
@@ -91,8 +92,8 @@ class ABCButton(QPushButton):
 
     def setHint(self, text: str):
         """
-        设置工具提示
-        :param text: 内容
+        Setting Tooltips
+        :param text: content
         :return:
         """
         self.hint = text
@@ -102,9 +103,11 @@ class ABCButton(QPushButton):
 
     def setFixedStyleSheet(self, style_sheet):  # 劫持这个按钮的stylesheet，只能设置outfit的样式表
         """
-        设置按钮组件固定的样式表\n
-        注意，这不会设置按钮本身的固定样式表，而且不能改变相应的颜色设置，本方法只应用于更改边框圆角半径等属性
-        :param style_sheet: 固定样式表
+        Set the button component's fixed style sheet\n
+        Note that this will not set the fixed style sheet of the button itself,\n
+        and cannot change the corresponding color settings.\n
+        This method should only be used to change properties such as border radius.
+        :param style_sheet: Fixed style sheet
         :return:
         """
         self.hover_highlight.setFixedStyleSheet(style_sheet)
@@ -112,9 +115,11 @@ class ABCButton(QPushButton):
 
     def setStyleSheet(self, style_sheet):  # 劫持这个按钮的stylesheet，只能设置outfit的样式表
         """
-        设置按钮组件样式表\n
-        注意，这不会设置按钮本身的样式表，而且不能改变相应的颜色设置，本方法只应用于更改边框圆角半径等属性
-        :param style_sheet: 样式表
+        Set the button component style sheet\n
+        Note that this will not set the style sheet of the button itself,\n
+        and will not change the corresponding color settings.\n
+        This method should only be used to change properties such as border radius.
+        :param style_sheet: Style Sheets
         :return:
         """
         self.hover_highlight.setStyleSheet(style_sheet)
@@ -122,8 +127,9 @@ class ABCButton(QPushButton):
 
     def reloadStyleSheet(self):
         """
-        重载样式表，建议将所有设置样式表的内容重写在此方法中\n
-        此方法在窗口show方法被调用时、主题改变时被调用
+        Overload the style sheet.\n
+        It is recommended to rewrite all the contents of the style sheet in this method.\n
+        This method is called when the window show method is called or the theme is changed.
         :return:
         """
         self.attachment().reloadStyleSheet()
@@ -139,8 +145,8 @@ class ABCButton(QPushButton):
 
     def setFlashOnClicked(self, b: bool):
         """
-        设置是否启用点击动画
-        :param b: 是否启用
+        Set whether to enable click animation
+        :param b: boolean
         :return:
         """
         self.flash_on_clicked = b
@@ -186,7 +192,7 @@ class ABCButton(QPushButton):
 
     def adjustSize(self):
         """
-        根据被绑定控件的大小调整按钮的大小
+        Adjust the size of the button according to the size of the bound control
         :return:
         """
         att_size = self.attachment().size()
@@ -255,7 +261,7 @@ class ABCPushButton(ABCButton):
 
 class LongPressThread(QThread):
     """
-    长按按钮的线程，用于处理长按计时、信号触发和动画
+    The thread for long pressing the button is used to handle long pressing timing, signal triggering and animation
     """
     ticked = pyqtSignal(float)
     holdTimeout = pyqtSignal()
@@ -315,7 +321,7 @@ class LongPressThread(QThread):
 
 class ABCToggleButton(ABCButton):
     """
-    切换按钮抽象类，注意：这并非是复选框的抽象类
+    Toggle button abstract class, note: this is not the abstract class of the check box
     """
 
     def __init__(self, *args, **kwargs):
@@ -343,8 +349,8 @@ class ABCToggleButton(ABCButton):
 
     def setBorderRadius(self, r: int):
         """
-        设置边框圆角半径
-        :param r: 半径
+        Set the border corner radius
+        :param r: int
         """
         self.border_radius = r
 

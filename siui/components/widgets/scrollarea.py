@@ -7,7 +7,7 @@ from siui.core.silicon import Si
 
 class SiScrollArea(SiWidget):
     """
-    滚动区域
+    Scrolling Area
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -42,7 +42,7 @@ class SiScrollArea(SiWidget):
 
     def reloadStyleSheet(self):
         """
-        重载样式表
+        Overriding the Style Sheet
         :return:
         """
         super().reloadStyleSheet()
@@ -51,7 +51,7 @@ class SiScrollArea(SiWidget):
 
     def setAttachment(self, widget):
         """
-        绑定子控件，作为滚动的部件
+        Bind child controls as scrolling components
         :param widget:
         :return:
         """
@@ -63,8 +63,8 @@ class SiScrollArea(SiWidget):
 
     def attachment(self):
         """
-        获取被绑定控件
-        :return: 被绑定控件
+        Get the bound control
+        :return: Bound Control
         """
         return self.attachment_
 

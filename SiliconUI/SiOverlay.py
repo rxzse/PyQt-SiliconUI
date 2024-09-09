@@ -135,7 +135,7 @@ class SiOverlay(QLabel):
             self.operation.setGeometry(oi, 0, mw - 2 * oi, oh)
             self.body.setGeometry(0, 0, mw, mh - oh)
         except Exception as e:
-            print("SiOverlay 重设大小出错", e)
+            print("SiOverlay error resizing", e)
 
     def show_animation(self):
         self.showup_animation.setTarget(0)

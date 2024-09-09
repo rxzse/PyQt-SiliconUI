@@ -78,8 +78,8 @@ class SiWidget(QWidget):
 
     def reloadStyleSheet(self):
         """
-        重载样式表，建议将所有设置样式表的内容重写在此方法中\n
-        此方法在窗口show方法被调用时、主题改变时被调用
+        Overload the style sheet. It is recommended to rewrite all the contents of the style sheet in this method.\n
+        This method is called when the window show method is called or the theme is changed.
         :return:
         """
         return
@@ -106,8 +106,8 @@ class SiWidget(QWidget):
 
     def animationGroup(self):
         """
-        返回动画组
-        :return: 动画组
+        Return to Animation Group
+        :return: ani_gr
         """
         return self.animation_group
 
@@ -130,8 +130,10 @@ class SiWidget(QWidget):
 
     def setFixedStyleSheet(self, fixed_stylesheet: str):
         """
-        设置样式表前置固定内容，同时将其设为样式表，此后每次运行 setStyleSheet 方法时，都会在样式表前附加这段固定内容
-        :param fixed_stylesheet: 样式表内容
+        Set the style sheet to the front of the fixed content,\n
+        and set it as a style sheet. Each time you run the setStyleSheet method,\n
+        this fixed content will be appended to the front of the style sheet.
+        :param fixed_stylesheet: Style sheet content
         :return:
         """
         self.fixed_stylesheet = fixed_stylesheet
@@ -157,11 +159,11 @@ class SiWidget(QWidget):
                       x2: int,
                       y2: int):
         """
-        设置移动限制，移动限制会阻止动画目标超出矩形范围限制
-        :param x1: 左上 横坐标
-        :param y1: 左上 纵坐标
-        :param x2: 右下 横坐标
-        :param y2: 右下 纵坐标
+        Set movement limits. Movement limits will prevent the animation target from exceeding the rectangular range limit.
+        :param x1: Upper left horizontal axis
+        :param y1: Upper left vertical coordinate
+        :param x2: Lower right horizontal axis
+        :param y2: Lower right vertical coordinate
         :return:
         """
         # 拖动控件只能在这个范围内运动
@@ -181,9 +183,9 @@ class SiWidget(QWidget):
 
     def moveTo(self, x: int, y: int):
         """
-        带动画地将控件移动到指定位置
-        :param x: 目标横坐标
-        :param y: 目标纵坐标
+        Move the control to the specified position with animation
+        :param x: Target horizontal coordinate
+        :param y: Target vertical coordinate
         :return:
         """
         # moveTo 方法不同于 move，它经过动画（如果开启）
@@ -196,9 +198,9 @@ class SiWidget(QWidget):
 
     def resizeTo(self, w: int, h: int):
         """
-        具动画重设大小到目标尺寸
-        :param w: 宽
-        :param h: 高
+        Animated resizing to target size
+        :param w: Width
+        :param h: high
         :return:
         """
         if self.isSiliconWidgetFlagOn(Si.InstantResize) is False and self.isVisible() is True:
@@ -209,8 +211,8 @@ class SiWidget(QWidget):
 
     def setColorTo(self, color_code):
         """
-        设置目标颜色，同时启动动画
-        :param color_code: 色号
+        Set the target color and start the animation
+        :param color_code: Color
         :return:
         """
         self.animation_color.setTarget(SiColor.toArray(color_code))
@@ -218,8 +220,8 @@ class SiWidget(QWidget):
 
     def setColor(self, color_code):
         """
-        设置颜色
-        :param color_code: 色号
+        Setting Color
+        :param color_code: Color
         :return:
         """
         color_value = SiColor.toArray(color_code)
@@ -228,8 +230,8 @@ class SiWidget(QWidget):
 
     def setOpacity(self, opacity: float):
         """
-        设置透明度
-        :param opacity: 透明度值 0-1
+        Set transparency
+        :param opacity: Transparency value 0-1
         :return:
         """
         self.animation_opacity.setCurrent(opacity)
@@ -244,8 +246,8 @@ class SiWidget(QWidget):
 
     def setOpacityTo(self, opacity: float):
         """
-        带动画地设置控件的透明度
-        :param opacity: 透明度值 0-1
+        Set the transparency of a control with animation
+        :param opacity: Transparency value 0-1
         :return:
         """
         if self.isSiliconWidgetFlagOn(Si.InstantSetOpacity) is False:

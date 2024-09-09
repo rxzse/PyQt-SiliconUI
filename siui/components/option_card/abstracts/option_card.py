@@ -4,7 +4,7 @@ from siui.core.globals.globals import SiGlobal
 
 class ABCSiOptionCardPlane(SiLabel):
     """
-    平面型选项卡，划分 header, body, footer，为一般场景提供支持
+    Flat tabs, divided into [header, body, footer] to provide support for general scenarios
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -42,36 +42,36 @@ class ABCSiOptionCardPlane(SiLabel):
 
     def setSpacing(self, spacing):
         """
-        设置容器与边缘左右的间隔
-        :param spacing: 间隔
+        Set the spacing between the container and the left and right edges
+        :param spacing: spacing
         """
         self.spacing_ = spacing
 
     def spacing(self):
         """
-        获取容器与边缘左右的间隔
-        :return: 间隔
+        Get the distance between the container and the left and right edges
+        :return: spacing
         """
         return self.spacing_
 
     def header(self):
         """
-        返回 header 容器
-        :return: header 容器
+        Returns the header container
+        :return: Header container
         """
         return self.header_
 
     def body(self):
         """
-        返回 body 容器
-        :return: body 容器
+        Returns the body container
+        :return: body container
         """
         return self.body_
 
     def footer(self):
         """
-        返回 footer 容器
-        :return: footer 容器
+        Return to the footer container
+        :return: footer container
         """
         return self.footer_
 

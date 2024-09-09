@@ -75,7 +75,7 @@ class SiPixLabel(SiLabel):
 
 class SiSvgLabel(SiLabel):
     """
-    可以显示 Svg 图像的 SiLabel 标签
+    SiLabel tag that can display Svg images
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -87,17 +87,17 @@ class SiSvgLabel(SiLabel):
 
     def load(self, path_or_data):
         """
-        从字符串或者文件加载 svg 数据
-        :param path_or_data: 文件路径或是 svg 字符串
+        Load SVG data from string or file
+        :param path_or_data: File path or SVG string
         :return:
         """
         self.svg_widget.load(path_or_data)
 
     def setSvgSize(self, w, h):
         """
-        设置 svg 图标的大小
-        :param w: 宽度
-        :param h: 高度
+        Set the size of the SVG icon
+        :param w: int
+        :param h: int
         """
         self.svg_widget.setFixedSize(w, h)
         self.resize(self.size())    # 保证居中
@@ -113,7 +113,7 @@ class SiSvgLabel(SiLabel):
 
 class SiIconLabel(SiLabel):
     """
-    具图标的标签，即一个图标紧跟一段文字的标签，使用一个 SiSvgLabel 和 SiLabel 组合
+    A label with an icon, that is, a label with an icon followed by a text, uses a combination of SiSvgLabel and SiLabel
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -146,8 +146,8 @@ class SiIconLabel(SiLabel):
 
     def load(self, path_or_data):
         """
-        从字符串或者文件加载 svg 数据
-        :param path_or_data: 文件路径或是 svg 字符串
+        Load svg data from string or file
+        :param path_or_data: File path or svg string
         :return:
         """
         self.has_icon_flag = True
@@ -156,9 +156,9 @@ class SiIconLabel(SiLabel):
 
     def setSvgSize(self, w, h):
         """
-        设置 svg 图标的大小
-        :param w: 宽度
-        :param h: 高度
+        Set the size of the svg icon
+        :param w: int
+        :param h: int
         """
         self.icon_.resize(w, h)  # 这里直接设为一样，避免边缘切割
         self.icon_.setSvgSize(w, h)
@@ -197,7 +197,7 @@ class SiIconLabel(SiLabel):
 
 class SiDraggableLabel(SiLabel):
     """
-    为拖动事件提供支持的标签
+    A label that provides support for drag events
     """
     dragged = pyqtSignal(object)
 
@@ -210,8 +210,8 @@ class SiDraggableLabel(SiLabel):
 
     def setTrack(self, b: bool):
         """
-        设置是否每次鼠标移动时调用 moveTo 移动到鼠标位置
-        :param b: 是否跟踪
+        Set whether to call moveTo to move to the mouse position each time the mouse moves
+        :param b: Tracking
         :return:
         """
         self.track = b

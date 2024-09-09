@@ -4,7 +4,7 @@ from .abstract import ABCSiAnimation, Curve
 
 
 class SiExpAnimation(ABCSiAnimation):
-    """ 级数动画类，每次动画的进行步长都与当前进度有关 """
+    """ Progression animation class, the step length of each animation is related to the current progress """
 
     def __init__(self, parent=None):
         super().__init__(parent)

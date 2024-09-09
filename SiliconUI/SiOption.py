@@ -160,13 +160,13 @@ class SiOptionSourceCode(SiOptionLink):  # 源代码
         self.url = 'www.baidu.com'
 
         self._setMinimumHeight(64)
-        self.setText('源代码', '')
+        self.setText('Source code', '')
         self.setIcon(SiGlobal.icons.get('fi-rr-circle-small'))
         self.load(SiGlobal.icons.get('fi-rr-link'))
 
     def setURL(self, url):
         self.url = url
-        self.button.hint = '前往 ' + url
+        self.button.hint = 'Go ' + url
         self.connect(lambda : os.system('start {}'.format(self.url)))
 
 class SiOptionButton(SiOption):

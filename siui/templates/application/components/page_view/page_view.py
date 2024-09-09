@@ -13,21 +13,21 @@ class PageButton(SiToggleButton):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # 设置自身样式
+        # Set your own style
         self.setBorderRadius(6)
         self.colorGroup().assign(SiColor.BUTTON_OFF, "#00FFFFFF")
         self.colorGroup().assign(SiColor.BUTTON_ON, "#10FFFFFF")
 
-        # 创建高光指示条，用于指示被选中
+        # Create a highlight indicator bar to indicate selection
         self.active_indicator = SiLabel(self)
         self.active_indicator.setFixedStyleSheet("border-radius: 2px")
         self.active_indicator.resize(4, 20)
         self.active_indicator.setOpacity(0)
 
-        # 绑定点击事件到切换状态的方法
+        # How to bind click events to toggle states
         self.clicked.connect(self._on_clicked)
 
-        # 设置自身索引
+        # Set the self index
         self.index_ = -1
 
     def reloadStyleSheet(self):
@@ -38,8 +38,8 @@ class PageButton(SiToggleButton):
 
     def setActive(self, state):
         """
-        设置激活状态
-        :param state: 状态
+        Set activation state
+        :param state: state
         """
         self.setChecked(state)
         self.active_indicator.setOpacityTo(1 if state is True else 0)
@@ -48,14 +48,14 @@ class PageButton(SiToggleButton):
 
     def setIndex(self, index: int):
         """
-        设置索引
+        Setting the index
         """
         self.index_ = index
 
     def index(self):
         """
-        获取自身索引
-        :return: 索引
+        Get own index
+        :return: index
         """
         return self.index_
 
@@ -67,7 +67,7 @@ class PageButton(SiToggleButton):
     def _on_clicked(self):
         self.setActive(True)
 
-        # 遍历统一父对象下的所有同类子控件，全部设为未激活
+        # Traverse all similar child controls under the same parent object and set them all to inactive
         for obj in self.parent().children():
             if isinstance(obj, PageButton) and obj != self:
                 obj.setActive(False)
@@ -79,29 +79,29 @@ class PageButton(SiToggleButton):
 
 class PageNavigator(ABCSiNavigationBar):
     """
-    页面导航栏
+    Page Navigation Bar
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # 清空自己的样式表防止继承
+        # Clear your own style sheet to prevent inheritance
         self.setStyleSheet("")
 
-        # 创建容器用于放置按钮
+        # Create a container to place the button
         self.container = SiDenseVContainer(self)
         self.container.setSpacing(8)
         self.container.setAlignment(Qt.AlignCenter)
 
-        # 所有按钮
+        # All Buttons
         self.buttons = []
 
     def addPageButton(self, svg_data, hint, func_when_active, side="top"):
         """
-        添加页面按钮
-        :param svg_data: 按钮的 svg 数据
-        :param hint: 工具提示
-        :param func_when_active: 当被激活时调用的函数
-        :param side: 添加在哪一侧
+        Add Page Button
+        :param svg_data: The svg data of the button
+        :param hint: Tooltips
+        :param func_when_active: Function called when activated
+        :param side: Which side to add
         """
         new_page_button = PageButton(self)
         new_page_button.setIndex(self.maximumIndex())
@@ -112,10 +112,10 @@ class PageNavigator(ABCSiNavigationBar):
         new_page_button.attachment().load(svg_data)
         new_page_button.activated.connect(func_when_active)
 
-        # 绑定索引切换信号，当页面切换时，会使按钮切换为 checked 状态
+        # Bind the index switching signal. When the page is switched, the button will switch to the checked state.
         self.indexChanged.connect(new_page_button.on_index_changed)
 
-        # 新按钮添加到容器中
+        # The new button is added to the container
         self.container.addWidget(new_page_button, side=side)
         self.setMaximumIndex(self.maximumIndex() + 1)
 
@@ -139,26 +139,26 @@ class StackedContainerWithShowUpAnimation(SiStackedContainer):
 
 class PageView(SiDenseHContainer):
     """
-    页面视图，包括左侧的导航栏和右侧的页面
+    Page view, including the navigation bar on the left and the page on the right
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, *kwargs)
 
-        # 清空自己的样式表防止继承
+        # Clear your own style sheet to prevent inheritance
         self.setStyleSheet("")
 
         self.setSpacing(0)
         self.setAdjustWidgetsSize(True)
 
-        # 创建导航栏
+        # Creating a Navigation Bar
         self.page_navigator = PageNavigator(self)
         self.page_navigator.setFixedWidth(16+24+16)
 
-        # 创建堆叠容器
+        # Creating stacked containers
         self.stacked_container = StackedContainerWithShowUpAnimation(self)
         self.stacked_container.setObjectName("stacked_container")
 
-        # <- 添加到水平布局
+        # <- Add to horizontal layout
         self.addWidget(self.page_navigator)
         self.addWidget(self.stacked_container)
 
@@ -167,11 +167,11 @@ class PageView(SiDenseHContainer):
 
     def addPage(self, page, icon, hint, side="top"):
         """
-        添加页面，这会在导航栏添加一个按钮，并在堆叠容器中添加页面
-        :param page: 页面控件
-        :param icon: 按钮的 svg 数据或路径
-        :param hint: 工具提示
-        :param side: 按钮添加在哪一侧
+        Add Page, which adds a button to the navbar and adds the page to the stack container
+        :param page: Page Control
+        :param icon: The svg data or path of the button
+        :param hint: Tooltips
+        :param side: On which side should the button be added?
         """
         self.stacked_container.addWidget(page)
         self.page_navigator.addPageButton(

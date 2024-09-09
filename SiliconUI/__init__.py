@@ -3,21 +3,21 @@ import os
 import sys
 import ctypes
 
-print('当前工作目录', sys.argv[0])
+print('Current working directory', sys.argv[0])
 
 def get_windows_scaling_factor():
     try:
-        # 调用 Windows API 函数获取缩放比例
+        # Call the Windows API function to get the scaling factor
         user32 = ctypes.windll.user32
         user32.SetProcessDPIAware()
         scaling_factor = user32.GetDpiForSystem()
 
-        # 计算缩放比例
-        print("缩放比例(SiliconUI)", scaling_factor / 96.0)
+        # Calculate the scaling factor
+        print("Scaling (SiliconUI)", scaling_factor / 96.0)
         return scaling_factor / 96.0
 
     except Exception as e:
-        print("无法获取缩放比例，设置为1，错误:", e)
+        print("Unable to get the scaling factor, set to 1, error:", e)
         return 1
 
 SA_SCALE_FACTOR = get_windows_scaling_factor()

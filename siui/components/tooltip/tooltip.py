@@ -83,24 +83,27 @@ class ToolTipWindow(SiWidget):
 
     def setNowInsideOf(self, widget):
         """
-        设置当前位于哪个控件内部。对于 siui 的控件，这将会在设置工具提示显示时被调用并传入调用者，在隐藏时被调用并传入 None
-        :param widget: 在哪个控件的内部（被谁触发了显示）
+        Sets which control is currently inside. For siui controls, 
+        this will be called and passed in the caller when setting 
+        the tooltip to be displayed, and will be called and passed in 
+        [None] when it is hidden
+        :param widget: Inside which control (who triggered the display)
         :return:
         """
         self.now_inside_of = widget
 
     def nowInsideOf(self):
         """
-        返回最后一次被调用显示时的发出者
-        :return: 控件或None
+        Returns the issuer of the last call to display
+        :return: Control|None
         """
         return self.now_inside_of
 
     def setText(self, text, flash=True):
         """
-        设置工具提示的内容，支持富文本
-        :param text: 内容，将被转化为字符串
-        :param flash: 是否闪烁高光层
+        Set the tooltip content, support rich text
+        :param text: Content, which will be converted into a string
+        :param flash: Whether to flash the highlight layer
         :return:
         """
         text_changed = self.text_label.text() != text
@@ -111,7 +114,7 @@ class ToolTipWindow(SiWidget):
 
     def _refresh_size(self):
         """
-        用于设置大小动画结束值并启动动画
+        Used to set the end value of the size animation and start the animation
         :return:
         """
         w, h = self.text_label.width(), self.text_label.height()
@@ -121,7 +124,7 @@ class ToolTipWindow(SiWidget):
 
     def flash(self):
         """
-        激活高光层动画，使高光层闪烁
+        Activate the highlight layer animation to make the highlight layer flash
         :return:
         """
         # 刷新高亮层动画当前值和结束值，实现闪烁效果

@@ -107,12 +107,12 @@ class SiAnimationStandardForArray(SiAnimationStandard):
 
     def setTarget(self, target):
         if type(target) == float or type(target) == int:
-            print('警告：你使用了适用于数组的动画类，但是传入了单个数字，这可能具有误导性')
+            print('Warning: You are using an animation class that works with arrays, but you are passing in a single number, which may be misleading.')
         self.target = numpy.array(target)
 
     def setCurrent(self, current):
         if type(current) == float or type(current) == int:
-            print('警告：你使用了适用于数组的动画类，但是传入了单个数字，这可能具有误导性')
+            print('Warning: You are using an animation class that works with arrays, but you are passing in a single number, which may be misleading.')
         self.current = numpy.array(current)
 
     def stepLength(self, dis):

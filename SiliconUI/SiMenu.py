@@ -188,7 +188,7 @@ class SiMenu(QWidget):
             if obj.name == name:
                 self.menubody._changeHandler([obj.name, obj.value])
                 return
-        print('未找到选项名为', name)
+        print('Option named not found >', name)
         obj = self.menubody.options_label[0]
         self.menubody._changeHandler([obj.name, obj.value])
 

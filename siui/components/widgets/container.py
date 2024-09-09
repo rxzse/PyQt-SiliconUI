@@ -16,7 +16,7 @@ class PlaceHolderWidget(QWidget):
 
 class ABCDenseContainer(SiWidget):
     """
-    密堆容器抽象类
+    Dense heap container abstract class
     """
 
     def __init__(self, *args, **kwargs):
@@ -31,31 +31,31 @@ class ABCDenseContainer(SiWidget):
 
     def setUseMoveTo(self, b: bool):
         """
-        在调整控件位置时是否使用 moveto 方法移动控件而非 move
-        :param b: 是否使用 moveto
+        Whether to use the moveto method to move the control instead of move when adjusting the control position.
+        :param b: bool
         """
         self.use_moveto = b
 
     def setAdjustWidgetsSize(self, b: bool):
         """
-        设置子控件是否在垂直于容器的方向上自动适应
-        :param b: 是否自动适应
+        Sets whether the child control automatically adapts in the direction perpendicular to the container
+        :param b: bool
         :return:
         """
         self.adjust_widgets_size = b
 
     def setShrinking(self, b: bool):
         """
-        设置调整尺寸方法被调用时，是否尺寸变小
-        :param b: 是否允许
+        Sets whether the size becomes smaller when the resize method is called
+        :param b: bool
         :return:
         """
         self.shrinking = b
 
     def setAlignCenter(self, b: bool):
         """
-        设置是否将子控件放置在容器中轴线上
-        :param b: 是否放置在中轴线上
+        Set whether to place the child control on the center axis of the container
+        :param b: bool
         :return:
         """
         print("Warning: method `setAlignCenter` is deprecated, use setAlignment(Qt.AlignCenter) instead.")  # noqa: T201
@@ -70,8 +70,8 @@ class ABCDenseContainer(SiWidget):
 
     def setSpacing(self, spacing: int):
         """
-        设置控件之间的距离
-        :param spacing: 距离 px
+        Set the distance between controls
+        :param spacing: int px
         :return:
         """
         self.spacing = spacing
@@ -96,7 +96,7 @@ class ABCDenseContainer(SiWidget):
 
 class SiDenseHContainer(ABCDenseContainer):
     """
-    一个可以水平方向紧密靠左或靠右堆叠控件的容器
+    A container that can stack controls tightly to the left or right horizontally.
     """
 
     def __init__(self, *args, **kwargs):
@@ -107,10 +107,10 @@ class SiDenseHContainer(ABCDenseContainer):
 
     def addPlaceholder(self, length, side="left", index=10000):
         """
-        添加占位符
-        :param length: 占位符的宽度
-        :param side: 添加到哪一侧
-        :param index: 插入位置
+        Adding a placeholder
+        :param length: The width of the placeholder
+        :param side: Which side to add to
+        :param index: Insertion position
         :return:
         """
         new_label = PlaceHolderWidget(self)
@@ -120,16 +120,16 @@ class SiDenseHContainer(ABCDenseContainer):
 
     def addWidget(self, widget, side="left", index=10000):
         """
-        添加子控件，这将调整被添加的控件的父对象为该容器
-        :param widget: 控件
-        :param side: 添加到哪一侧
-        :param index: 插入位置
+        Add a child control, which will adjust the parent object of the added control to the container
+        :param widget: control
+        :param side: Which side to add to
+        :param index: Insertion position
         :return:
         """
         widget.setParent(self)
 
         if side != "left" and side != "right":
-            raise ValueError(f"意外方向参数 {side}")
+            raise ValueError(f"Unexpected Direction Parameters {side}")
 
         if side == "left":
             self.widgets_left = self.widgets_left[:index] + [widget] + self.widgets_left[index:]
@@ -162,8 +162,8 @@ class SiDenseHContainer(ABCDenseContainer):
 
     def removeWidget(self, widget):
         """
-        从容器中移除控件
-        :param widget: 控件
+        Removes a control from its container
+        :param widget: control
         """
         if widget in self.widgets_left:
             index = self.widgets_left.index(widget)
@@ -203,7 +203,7 @@ class SiDenseHContainer(ABCDenseContainer):
 
     def arrangeWidget(self):
         """
-        调整子控件的几何信息。这包括排列子控件，置于中轴线上，以及适应容器s
+        Adjust the geometry of child controls. This includes arranging child controls, placing them on the center axis, and fitting them to the container.
         :return:
         """
         # 初始化已使用空间的计数器
@@ -266,7 +266,7 @@ class SiDenseHContainer(ABCDenseContainer):
 
     def adjustSize(self):
         """
-        根据自身具有的控件调整自身的大小
+        Adjust its size according to the controls it has
         :return:
         """
         # 获取最佳尺寸
@@ -282,7 +282,7 @@ class SiDenseHContainer(ABCDenseContainer):
 
 class SiDenseVContainer(ABCDenseContainer):
     """
-    一个可以竖直方向紧密靠上或靠下堆叠控件的容器
+    A container that can stack controls vertically close together.
     """
 
     def __init__(self, *args, **kwargs):
@@ -293,10 +293,10 @@ class SiDenseVContainer(ABCDenseContainer):
 
     def addPlaceholder(self, length, side="top", index=10000):
         """
-        添加占位符
-        :param length: 占位符的高
-        :param side: 添加到哪一侧
-        :param index: 插入位置
+        Adding a placeholder
+        :param length: Placeholder height
+        :param side: Which side to add to
+        :param index: Insertion position
         :return:
         """
         new_label = PlaceHolderWidget(self)
@@ -306,16 +306,16 @@ class SiDenseVContainer(ABCDenseContainer):
 
     def addWidget(self, widget, side="top", index=10000):
         """
-        添加子控件，这将调整被添加的控件的父对象为该容器
-        :param widget: 子控件
-        :param side: 添加到哪一侧
-        :param index: 插入的位置
+        Add a child control, which will adjust the parent object of the added control to the container
+        :param widget: child control
+        :param side: Which side to add to
+        :param index: Insertion location
         :return:
         """
         widget.setParent(self)
 
         if side != "top" and side != "bottom":
-            raise ValueError(f"意外方向参数 {side}")
+            raise ValueError(f"Unexpected Direction Parameters {side}")
 
         if side == "bottom":
             self.widgets_bottom = self.widgets_bottom[:index] + [widget] + self.widgets_bottom[index:]
@@ -372,8 +372,8 @@ class SiDenseVContainer(ABCDenseContainer):
 
     def removeWidget(self, widget):
         """
-        从容器中移除控件
-        :param widget: 控件
+        Removes a control from its container
+        :param widget: control
         """
         if widget in self.widgets_top:
             index = self.widgets_top.index(widget)
@@ -389,7 +389,7 @@ class SiDenseVContainer(ABCDenseContainer):
 
     def arrangeWidget(self):  # noqa: C901
         """
-        调整子控件的几何信息。这包括排列子控件，置于中轴线上，以及适应容器
+        Adjust the geometry of the child widgets. This includes arranging the child widgets, placing them on the center axis, and fitting them to the container.
         :return:
         """
         # 初始化已使用空间的计数器
@@ -452,7 +452,7 @@ class SiDenseVContainer(ABCDenseContainer):
 
     def adjustSize(self):
         """
-        根据自身具有的控件调整自身的大小
+        Adjust its size according to the controls it has
         :return:
         """
         # 获取最佳尺寸
@@ -534,7 +534,7 @@ class SiDividedVContainer(ABCSiDividedContainer):
 
 class SiStackedContainer(SiLabel):
     """
-    允许堆叠的容器，可以绑定多个界面，并只显示其中一个
+    Allows stacking of containers, can bind multiple interfaces and only display one of them
     """
 
     def __init__(self, *args, **kwargs):
@@ -548,24 +548,24 @@ class SiStackedContainer(SiLabel):
 
     def widgetsAmount(self):
         """
-        获取子控件的数量
-        :return: 子控件数量
+        Get the number of child controls
+        :return: Number of child controls
         """
         return len(self.widgets)
 
     def addWidget(self, widget):
         """
-        添加子控件（页面）
-        :param widget: 子控件
+        Add child controls (pages)
+        :param widget: child controls
         :return:
         """
         self.insertWidgets(widget, 10000)
 
     def insertWidgets(self, widget, index: int):
         """
-        添加子控件（页面），如果插入位置过大，会置于序列最后
-        :param widget: 子控件
-        :param index: 索引
+        Add a child control (page). If the insertion position is too large, it will be placed at the end of the sequence.
+        :param widget: Child Controls
+        :param index: index
         """
         widget.setParent(self)
         widget.resize(self.size())
@@ -578,15 +578,15 @@ class SiStackedContainer(SiLabel):
 
     def currentIndex(self):
         """
-        获取当前索引
-        :return: 索引
+        Get the current index
+        :return: index
         """
         return self.current_index_
 
     def setCurrentIndex(self, index: int):
         """
-        设置当前索引
-        :param index: 索引
+        Set the current index
+        :param index: int
         """
         self.current_index_ = index
         for widget in self.widgets:

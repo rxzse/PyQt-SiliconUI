@@ -346,7 +346,7 @@ class SiButtonHoldtoConfirm(SiButton):
         super().enterEvent(event)
         try:
             SiGlobal.floating_window.show_animation()
-            SiGlobal.floating_window.setText('长按以确定')
+            SiGlobal.floating_window.setText('Long press to confirm')
         except:
             pass
 

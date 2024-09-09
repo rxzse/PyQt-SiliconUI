@@ -1,14 +1,15 @@
 """
-基本思路
+Basic idea
 
-· 触发器函数
-      触发器函数需要经过修饰器修饰，修饰器传入一条
-  函数链，在触发器函数被执行之后，执行传入函数链的
-  一个运行方法，从而开始函数链的运行。
+· Trigger Function
+      The trigger function needs to be modified by a decorator, 
+  which passes in a function chain. After the trigger function is executed, 
+  a run method of the passed function chain is executed to start the function chain.
 
-· 函数链
-      提供添加函数，指定传入参数，提供开始运行方法，
-  提供被执行函数的返回值管理。
+· Function Chaining
+      Provides the ability to add functions, 
+  specify incoming parameters, start running methods, 
+  and manage the return values ​​of executed functions.
 """
 
 import functools
@@ -191,7 +192,7 @@ def test_trigger_function(number_a, number_b):
     return number_a, number_b, number_a + number_b, number_a * number_b
 
 
-# 测试开始
+# Test Start
 test_trigger_function(114514, 1919)
 test_trigger_function(123, 345)
 

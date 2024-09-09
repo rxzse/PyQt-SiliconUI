@@ -63,15 +63,15 @@ class ABCSiAnimation(QObject):
 
     def current(self):
         """
-        返回动画计数器的当前值
-        :return: 当前值
+        Returns the current value of the animation counter
+        :return: Current Value
         """
         return self.current_
 
     def target(self):
         """
-        返回动画计数器的目标值
-        :return: 目标值
+        Returns the target value of the animation counter
+        :return: Target value
         """
         return self.target_
 

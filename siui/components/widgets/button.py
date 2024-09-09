@@ -13,8 +13,8 @@ from siui.gui.font import GlobalFont, SiFont
 
 class SiPushButton(ABCPushButton):
     """
-    点击按钮，可以设置文字、图标或是兼有\n
-    被绑定部件是一个 SiIconLabel，需要使用 attachment 方法来访问它
+    Click the button to set text, icon or both\n
+    The bound component is a SiIconLabel, and you need to use the attachment method to access it.
     """
 
     def __init__(self, *args, **kwargs):
@@ -65,8 +65,8 @@ class SiPushButton(ABCPushButton):
 
     def setUseTransition(self, b: bool):
         """
-        设置按钮是否成为主题按钮
-        :param b: 是否设为主题按钮
+        Set whether the button becomes a theme button
+        :param b: bool
         :return:
         """
         self.use_transition = b
@@ -74,15 +74,15 @@ class SiPushButton(ABCPushButton):
 
 class SiLongPressButton(ABCPushButton):
     """
-    需要持续长按一段时间才能触发点击事件的按钮，可以设置文字、图标或是兼有\n
-    被绑定部件是一个 SiIconLabel，需要使用 attachment 方法来访问它
+    A button that needs to be pressed for a period of time to trigger a click event. You can set text, icon, or both.\n
+    The bound component is a SiIconLabel, and you need to use the attachment method to access it.
     """
     longPressed = pyqtSignal()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.setHint("长按以确定")
+        self.setHint("Long press to confirm")
 
         # 跟踪按钮按下的状态，用于长按动画的处理
         self.pressed_state = False
@@ -142,16 +142,16 @@ class SiLongPressButton(ABCPushButton):
 
     def isPressed(self):
         """
-        返回当前按钮是否处于被按下状态，这个方法往往用于内部使用
-        :return: 是否被按下
+        Returns whether the current button is pressed. This method is often used internally.
+        :return: bool
         """
         return self.pressed_state
 
 
 class SiToggleButton(ABCToggleButton):
     """
-    具有两个状态可以切换的按钮，可以设置文字、图标或是兼有\n
-    被绑定部件是一个 SiIconLabel，需要使用 attachment 方法来访问它
+    A button with two states that can be switched. You can set text, icon, or both.\n
+    The bound component is a SiIconLabel, and you need to use the attachment method to access it.
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, *kwargs)
@@ -173,7 +173,7 @@ class SiToggleButton(ABCToggleButton):
 
 class SiSimpleButton(SiToggleButton):
     """
-    仅有纯色背景的按钮
+    Button with solid background only
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, *kwargs)
@@ -191,7 +191,7 @@ class SiSimpleButton(SiToggleButton):
 
 class SiRadioButton(SiLabel):
     """
-    单选组件，提供一个单选按钮和一个文字标签，会自动设置默认大小
+    Radio component, provides a radio button and a text label, and automatically sets the default size
     """
     toggled = pyqtSignal(bool)
 
@@ -228,15 +228,15 @@ class SiRadioButton(SiLabel):
 
     def text(self):
         """
-        返回选项的文本
-        :return: 文本
+        Returns the text of the option
+        :return: str
         """
         return self.text_label.text()
 
     def setText(self, text):
         """
-        设置选项的文本
-        :param text: 文本
+        Set the text of the option
+        :param text: str
         :return:
         """
         self.text_label.setText(text)
@@ -247,8 +247,8 @@ class SiRadioButton(SiLabel):
 
     def setChecked(self, state):
         """
-        设置选项的选中状态
-        :param state: 是否被选中
+        Sets the selected state of an option
+        :param state: bool
         :return:
         """
         self.indicator.setChecked(state)
@@ -256,8 +256,8 @@ class SiRadioButton(SiLabel):
 
     def isChecked(self):
         """
-        获取选项是否已经被选中
-        :return: 被选中的状态
+        Gets whether the option is selected
+        :return: bool
         """
         return self.indicator.isChecked()
 
@@ -276,7 +276,7 @@ class SiRadioButton(SiLabel):
 
     def _uncheck_all_in_same_parent(self):
         """
-        消除父对象中所有单选框的选择状态，这保证了一个父对象下最多只有一个单选框被选中
+        Clear the selection state of all radio buttons in the parent object, which ensures that at most one radio button is selected under a parent object.
         :return:
         """
         # 遍历自己父对象的所有子对象
@@ -295,7 +295,7 @@ class SiRadioButton(SiLabel):
 
 class SiCheckBox(SiLabel):
     """
-    多选组件，提供一个多选按钮和一个文字标签
+    A multi-select component that provides a multi-select button and a text label
     """
     toggled = pyqtSignal(bool)
 
@@ -348,15 +348,15 @@ class SiCheckBox(SiLabel):
 
     def text(self):
         """
-        返回选项的文本
-        :return: 文本
+        Returns the text of the option
+        :return: str
         """
         return self.text_label.text()
 
     def setText(self, text):
         """
-        设置选项的文本
-        :param text: 文本
+        Set the text of the option
+        :param text: str
         :return:
         """
         self.text_label.setText(text)
@@ -367,16 +367,16 @@ class SiCheckBox(SiLabel):
 
     def setChecked(self, state):
         """
-        设置选项的选中状态
-        :param state: 是否被选中
+        Sets the selected state of an option
+        :param state: bool
         :return:
         """
         self.indicator.setChecked(state)
 
     def isChecked(self):
         """
-        获取选项是否已经被选中
-        :return: 被选中的状态
+        Gets whether the option is selected
+        :return: Selected state
         """
         return self.indicator.isChecked()
 
@@ -404,7 +404,7 @@ class SiCheckBox(SiLabel):
 
 class SiSwitch(QAbstractButton):
     """
-    开关
+    Switch
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -438,7 +438,7 @@ class SiSwitch(QAbstractButton):
 
     def reloadStyleSheet(self):
         """
-        重载样式表
+        Overriding the Style Sheet
         :return:
         """
         self._lever_move_animation_handler(self.switch_lever.x())

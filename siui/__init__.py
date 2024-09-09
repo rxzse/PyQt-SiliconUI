@@ -8,5 +8,5 @@ import siui.core.globals
 import siui.gui as gui
 import siui.templates as templates
 
-# 加载全局缩放比例
+# Load global scale
 siui.gui.scale.reload_scale_factor()

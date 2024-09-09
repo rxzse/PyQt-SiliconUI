@@ -27,7 +27,7 @@ class SiSwitch(QLabel):
         self.status_label.setFont(SiFont.font_L1)
         self.status_label.setGeometry(0, 0, self.status_width, 24)
         self.status_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-        self.status_label.setText('关闭')
+        self.status_label.setText('Off')
 
         # 按钮的框架
         self.switch_frame = QLabel(self)
@@ -85,11 +85,11 @@ class SiSwitch(QLabel):
         if status == True:
             #self.switch_lever.setGeometry(5 + 16, 5, 14, 14)
             self.target_position = 3 + 20
-            self.status_label.setText('开启')
+            self.status_label.setText('On')
         else:
             #self.switch_lever.setGeometry(5, 5, 14, 14)
             self.target_position = 3
-            self.status_label.setText('关闭')
+            self.status_label.setText('Off')
 
         if self.timer.isActive() == False:    # 如果线程没在运行，就启动
             self.startAnimation()

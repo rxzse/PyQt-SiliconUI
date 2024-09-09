@@ -188,13 +188,13 @@ class SiLabel(QLabel):
                 self.propagateAdjustSize(widget.parent())
     '''
     def adjustSize(self):
-        # 对比前后两次是否真正调整了大小
+        # Compare the two times to see if the size is actually adjusted
         size = [self.width(), self.height()]
         super().adjustSize()
 
-        # 如果调整了大小
+        # If you resize
         if size != [self.width(), self.height()]:
-            # 如果有父控件，则继续向上传播
+            # If there is a parent control, continue to propagate upwards
             if self.parent() is not None:
                 self.parent.adjustSize()
     '''

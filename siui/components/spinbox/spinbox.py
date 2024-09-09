@@ -81,9 +81,9 @@ class SiIntSpinBox(ABCSiSpinBox):
         if value < self.minimum() or value > self.maximum():
             try:
                 SiGlobal.siui.windows["MAIN_WINDOW"].LayerRightMessageSidebar().send(
-                    title="输入值超出范围",
-                    text=f"限制输入值为介于 {self.minimum()} 到 {self.maximum()} 的整数\n"
-                         "已修改为最接近的值",
+                    title="Out of range value",
+                    text=f"Limit input values between {self.minimum()} to {self.maximum()} integer\n"
+                         "Modified to the closest value",
                     msg_type=3,
                     icon=SiGlobal.siui.iconpack.get("ic_fluent_warning_regular"),
                     fold_after=2500,
@@ -112,9 +112,9 @@ class SiDoubleSpinBox(ABCSiSpinBox):
         if value < self.minimum() or value > self.maximum():
             try:
                 SiGlobal.siui.windows["MAIN_WINDOW"].LayerRightMessageSidebar().send(
-                    title="输入值超出范围",
-                    text=f"限制输入值为介于 {self.minimum()} 到 {self.maximum()} 的浮点数\n"
-                         "已修改为最接近的值",
+                    title="Out of range value",
+                    text=f"Limit input values between {self.minimum()} to {self.maximum()} float number\n"
+                         "Modified to the closest value",
                     msg_type=3,
                     icon=SiGlobal.siui.iconpack.get("ic_fluent_warning_regular"),
                     fold_after=2500,

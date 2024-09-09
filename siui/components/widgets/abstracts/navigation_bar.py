@@ -4,7 +4,7 @@ from siui.components.widgets.abstracts.widget import SiWidget
 
 
 class ABCSiNavigationBar(SiWidget):
-    """ 抽象导航栏 """
+    """ Thanh điều hướng trừu tượng """
     indexChanged = pyqtSignal(int)
 
     def __init__(self, *args, **kwargs):
@@ -17,16 +17,16 @@ class ABCSiNavigationBar(SiWidget):
         self.maximum_index_ = -1
 
     def setCurrentIndex(self, index):
-        """ 设置当前索引 """
+        """ Đặt chỉ mục hiện tại """
         self.current_index_ = index % (self.maximumIndex() + 1)
         self.indexChanged.emit(self.currentIndex())
 
     def currentIndex(self):
-        """ 获取当前索引 """
+        """ Lấy chỉ mục hiện tại """
         return self.current_index_
 
     def setMaximumIndex(self, max_index):
-        """ 设置最大的索引，超过最大索引的索引将会被取余数 """
+        """ Đặt chỉ mục tối đa. Các chỉ mục vượt quá chỉ số tối đa sẽ được giữ lại. """
         if max_index < self.maximumIndex():
             self.maximum_index_ = max_index
             self.setCurrentIndex(self.currentIndex())  # 如果最大索引变小，这样可以防止其超过界限
@@ -34,12 +34,12 @@ class ABCSiNavigationBar(SiWidget):
             self.maximum_index_ = max_index
 
     def maximumIndex(self):
-        """ 获取最大的索引 """
+        """ Lấy chỉ số lớn nhất """
         return self.maximum_index_
 
     def shift(self, step: int):
         """
-        将当前索引加 step
-        :param step: 步长
+        Thêm chỉ mục hiện tại step
+        :param step: step size
         """
         self.setCurrentIndex(self.currentIndex() + step)

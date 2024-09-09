@@ -57,8 +57,8 @@ class SiSliderH(QAbstractSlider):
                  value: int,
                  move_to: bool = True):
         """
-        设置滑块的值并移动滑块到指定位置
-        :param value: 值
+        Set the value of the slider and move it to the specified position
+        :param value: value
         :param move_to: Use moving animation
         """
         super().setValue(value)
@@ -67,7 +67,7 @@ class SiSliderH(QAbstractSlider):
 
     def _move_handle_according_to_value(self, move_to=False):
         """
-        由自身的值，将滑块移动到正确的位置上
+        Move the slider to the correct position based on its own value
         """
         sections_amount = (self.maximum() - self.minimum()) / self.singleStep()
         section_length = self.track.width() / sections_amount
@@ -81,7 +81,7 @@ class SiSliderH(QAbstractSlider):
 
     def _rate_from_handle_pos(self):
         """
-        从滑块坐标得到已滑动长度与总长度的比率
+        Get the ratio of the slid length to the total length from the slider coordinates
         """
         return self.handle.x() / self.track.width()
 

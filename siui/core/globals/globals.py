@@ -8,28 +8,28 @@ from siui.gui.icons.parser import SiGlobalIconPack
 
 class SiliconUIGlobal:
     """
-    SiliconUI 内部使用的全局数据\n
-    如果你也需要使用全局数据，可以将你的类添加到 SiGlobal 的一个属性
+    SiliconUI Global Data used internally\n
+    If you also need to use global data, you can add your class to a property of SiGlobal
     """
-    # 窗口字典，储存窗口对象
+    # Window dictionary, storing window objects
     windows = {}
 
-    # 颜色字典，存储全部动态设置的颜色
-    # 值为 RRGGBB 或 AARRGGBB 色号
+    # Color dictionary, stores all dynamically set colors
+    # The value is RRGGBB or AARRGGBB color number
     colors = DarkColorGroup()
 
-    # 图标字典，储存所有 SVG 类型的图标数据
-    # 值为 SVG信息的 bytes
+    # Icon dictionary, storing all SVG type icon data
+    # The value is bytes of SVG information
     icons = {}
     iconpack = SiGlobalIconPack()
     iconpack.set_default_color(colors.fromToken(SiColor.SVG_NORMAL))
 
-    # 样式表字典，储存所有动态样式表
-    # 值为字符串
+    # Style sheet dictionary, which stores all dynamic style sheets
+    # Value is a string
     qss = {}
 
-    # 字体字典，储存所有字体
-    # 值为 QFont 类型的字体
+    # Font dictionary, stores all fonts
+    # The value is a QFont type font
     fonts = GlobalFontDict.fonts
 
     def loadWindows(self, dictionary):
@@ -49,7 +49,7 @@ class SiliconUIGlobal:
 
     def reloadAllWindowsStyleSheet(self):
         """
-        调用各个窗口下的reloadStyleSheet方法并递归，重载所有窗口下所有控件的样式表
+        Call the reloadStyleSheet method in each window and recursively reload the style sheets of all controls in all windows
         """
         for window in self.windows.values():
             try:
@@ -78,15 +78,15 @@ class SiliconUIGlobal:
 
 class SiGlobal:
     """
-    全局数据\n
-    在 siui 模块被第一次导入时初始化 .siui 下的变量
+    Global Data\n
+    Initialize the variables under .siui when the siui module is imported for the first time
     """
     siui = SiliconUIGlobal()
 
 
 class NewGlobal:
     """
-    新全局数据
+    New global data
     """
     create_time = time.time()
 

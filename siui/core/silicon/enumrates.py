@@ -3,12 +3,12 @@ from enum import Enum, auto
 class Si(Enum):
     # the namespace of SiliconUI
     # Flags for SiWidget
-    FlashOnHintUpdated = auto()         # 在工具提示被重新设置时，使工具提示闪烁
-    InstantMove = auto()                # 是否立即移动而不运行动画
-    InstantResize = auto()              # 是否立即重设大小而不运行动画
-    InstantSetOpacity = auto()          # 是否立即重设透明度而不运行动画
-    HasMoveLimits = auto()              # 是否有移动限定区域
-    AdjustSizeOnTextChanged = auto()    # 是否在setText被调用时自动调整空间大小
-    EnableAnimationSignals = auto()     # 是否启用moved，resized，opacityChanged信号
-    DeleteOnHidden = auto()             # 下一次被隐藏时，运行 deleteLater()
-    DeleteCenterWidgetOnCenterWidgetHidden = auto()  # 中心控件下一次被隐藏时，运行 centerWidget().deleteLater()
+    FlashOnHintUpdated = auto()         # Make the tooltip flash when it is reset
+    InstantMove = auto()                # Whether to move immediately without running animation
+    InstantResize = auto()              # Whether to resize immediately without running animation
+    InstantSetOpacity = auto()          # Whether to reset transparency immediately without running an animation
+    HasMoveLimits = auto()              # Are there restricted movement areas?
+    AdjustSizeOnTextChanged = auto()    # Whether to automatically adjust the space size when setText is called
+    EnableAnimationSignals = auto()     # Whether to enable moved, resized, and opacityChanged signals
+    DeleteOnHidden = auto()             # The next time it is hidden, run deleteLater()
+    DeleteCenterWidgetOnCenterWidgetHidden = auto()  # The next time the center widget is hidden, run centerWidget().deleteLater()

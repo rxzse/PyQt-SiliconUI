@@ -3,7 +3,7 @@ from siui.core.animation.abstract import ABCSiAnimation
 
 class SiAnimationGroup:
     """
-    动画组，为多个动画的管理提供支持，允许使用token访问动画对象
+    Animation groups provide support for managing multiple animations and allow access to animation objects using tokens
     """
     def __init__(self):
         self.animations = []
@@ -11,7 +11,7 @@ class SiAnimationGroup:
 
     def addMember(self, ani, token: str):
         if token in self.tokens:
-            raise ValueError(f"代号已经存在：{token}")
+            raise ValueError(f"Code already exists: {token}")
         self.animations.append(ani)
         self.tokens.append(token)
 
@@ -19,4 +19,4 @@ class SiAnimationGroup:
         for ani, token in zip(self.animations, self.tokens):
             if token == aim_token:
                 return ani
-        raise ValueError(f"未在代号组中找到传入的代号：{aim_token}")
+        raise ValueError(f"The passed in token was not found in the token group: {aim_token}")

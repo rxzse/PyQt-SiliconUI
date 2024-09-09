@@ -63,8 +63,8 @@ class SiProgressBar(SiLabel):
 
     def setState(self, state: str):
         """
-        设置进度条状态
-        :param state: processing（加载）, completing（完成中）, paused（暂停）
+        Set the progress bar state
+        :param state: processing, completing, paused
         """
         if state not in ["processing", "completing", "paused"]:
             raise KeyError(f"Invalid state: {state}")
@@ -74,15 +74,15 @@ class SiProgressBar(SiLabel):
 
     def state(self):
         """
-        获取进度条状态
-        :return: 状态
+        Get the progress bar state
+        :return: state
         """
         return self.state_
 
     def setValue(self, value: float):
         """
-        设置进度条当前完成的百分比
-        :param value: 百分比
+        Set the current completion percentage of the progress bar
+        :param value: percentage
         :return:
         """
         self.value_ = max(0.0, min(value, 1.0))
@@ -103,27 +103,27 @@ class SiProgressBar(SiLabel):
 
     def value(self):
         """
-        获取进度条当前完成的百分比
-        :return: 百分比
+        Get the current completion percentage of the progress bar
+        :return: percentage
         """
         return self.value_
 
     def refreshHint(self):
         """
-        刷新工具提示，重写该方法以自定义工具提示
+        Refresh tooltip, override this method to customize the tooltip
         """
         self.setHint(f"{round(self.value()*100, 2)}<span style='color: {self.colorGroup().fromToken(SiColor.TEXT_C)}'>%</span>")  # noqa: E501
 
     def _flash(self):
         """
-        触发进度闪烁
+        Trigger progress flashing
         """
         self.flash.setColor(SiColor.trans(self.colorGroup().fromToken(SiColor.PROGRESS_BAR_FLASHES), 0.8))
         self.flash.setColorTo(SiColor.trans(self.colorGroup().fromToken(SiColor.PROGRESS_BAR_FLASHES), 0.0))
 
     def _resize_progress_according_to_value(self):
         """
-        按照当前进度条的值来设置进度的尺寸
+        Set the size of the progress bar according to the current value of the progress bar
         """
         available_width = self.track.width() - self.frame.height()
         progress_width = self.frame.height() + int(self.value() * available_width)
@@ -145,7 +145,7 @@ class SiProgressBar(SiLabel):
         self.frame.setGeometry(0, (h - self.frame.height()) // 2, w, self.frame.height())
         self.track.resize(w, self.frame.height())
 
-        # 重设大小之后，进度按比例缩放
+        # After resizing, progress is scaled proportionally
         self._resize_progress_according_to_value()
 
 

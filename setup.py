@@ -22,7 +22,7 @@ setup(
     long_description = open("README.md", encoding="utf-8").read(),  # 包的详细描述，通常来自README文件
     long_description_content_type = "text/markdown",  # README文件的格式
     url = "https://github.com/ChinaIceF/PyQt-SiliconUI",  # 项目主页
-    author = "ChinaIceF",  # 作者名
+    author = "ChinaIceF & ZSK",  # 作者名
     author_email = "ChinaIceF@outlook.com",  # 作者邮箱
     license = "GPL-3.0",  # 许可证
     classifiers=[  # 项目的分类信息

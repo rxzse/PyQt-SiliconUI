@@ -8,7 +8,7 @@ from siui.core.silicon import Si
 
 
 class SiPage(SiDenseVContainer):
-    """ 页面类，实例化后作为 SiliconApplication 中的单个页面 """
+    """ Page class, which is instantiated as a single page in SiliconApplication """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -30,41 +30,41 @@ class SiPage(SiDenseVContainer):
         self.addWidget(self.scroll_area)
 
     def setAttachment(self, widget):
-        """ 设置子控件 """
+        """ Setting up child controls """
         self.scroll_area.setAttachment(widget)
 
     def attachment(self):
-        """ 获取子控件 """
+        """ Get child controls """
         return self.scroll_area.attachment()
 
     def setScrollMaximumWidth(self, width: int):
         """
-        设置滚动区域的子控件的最大宽度
-        :param width: 最大宽度
+        Sets the maximum width of the scroll area's child controls
+        :param width: Maximum Width
         """
         self.scroll_maximum_width = width
         self.resize(self.size())
 
     def setScrollAlignment(self, a0):
         """
-        设置滚动区域的对齐方式
-        :param a0: Qt 枚举值
+        Set the scroll area alignment
+        :param a0: Qt enumeration values
         """
         self.scroll_alignment = a0
         self.resize(self.size())
 
     def setPadding(self, padding):
         """
-        内容左右距离边框的距离
-        :param padding: 像素数
+        The distance between the content and the border
+        :param padding: Number of pixels
         """
         self.padding = padding
         self.resize(self.size())
 
     def setTitle(self, title: str):
         """
-        设置页面标题
-        :param title: 标题
+        Set the page title
+        :param title: title
         """
         # 套标题用的水平容器
         self.title_container = SiDenseHContainer(self)

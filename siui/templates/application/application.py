@@ -13,22 +13,22 @@ from siui.templates.application.components.layer.layer_right_message_sidebar.lay
 
 class SiliconApplication(QMainWindow):
     """
-    SiliconUI 应用程序模板，包含工具提示窗口
+    SiliconUI application template, including tooltip window
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # 添加全局窗口
+        # Adding a global window
         SiGlobal.siui.windows["MAIN_WINDOW"] = self
         SiGlobal.siui.windows["TOOL_TIP"] = ToolTipWindow()
         SiGlobal.siui.windows["TOOL_TIP"].show()
         SiGlobal.siui.windows["TOOL_TIP"].setOpacity(0)
 
-        # 初始化窗口
+        # Initialize Window
         self.resize(1200, 700)
-        self.setWindowTitle("Silicon Application Template")
+        self.setWindowTitle("ZSK Application Template")
 
-        # 构建界面
+        # Build the interface
         self.layer_main = LayerMain(self)
         self.layer_child_page = LayerChildPage(self)
         self.layer_right_message_sidebar = LayerRightMessageSidebar(self)

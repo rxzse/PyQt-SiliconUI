@@ -35,29 +35,29 @@ class MySiliconApp(SiliconApplication):
 
         self.layerMain().addPage(ExampleHomepage(self),
                                  icon=SiGlobal.siui.iconpack.get("ic_fluent_home_filled"),
-                                 hint="主页", side="top")
+                                 hint="Homepage", side="top")
         self.layerMain().addPage(ExampleIcons(self),
                                  icon=SiGlobal.siui.iconpack.get("ic_fluent_diversity_filled"),
-                                 hint="图标包", side="top")
+                                 hint="Icon Packs", side="top")
         self.layerMain().addPage(ExampleWidgets(self),
                                  icon=SiGlobal.siui.iconpack.get("ic_fluent_box_multiple_filled"),
-                                 hint="控件", side="top")
+                                 hint="Controls", side="top")
         self.layerMain().addPage(ExampleContainer(self),
                                  icon=SiGlobal.siui.iconpack.get("ic_fluent_align_stretch_vertical_filled"),
-                                 hint="容器", side="top")
+                                 hint="Container", side="top")
         self.layerMain().addPage(ExampleOptionCards(self),
                                  icon=SiGlobal.siui.iconpack.get("ic_fluent_list_bar_filled"),
-                                 hint="选项卡", side="top")
+                                 hint="Tabs", side="top")
         self.layerMain().addPage(ExampleDialogs(self),
                                  icon=SiGlobal.siui.iconpack.get("ic_fluent_panel_separate_window_filled"),
-                                 hint="消息与二级界面", side="top")
+                                 hint="Messages/Dialogs", side="top")
         self.layerMain().addPage(ExampleFunctional(self),
                                  icon=SiGlobal.siui.iconpack.get("ic_fluent_puzzle_piece_filled"),
-                                 hint="功能组件", side="top")
+                                 hint="Functional Components", side="top")
 
         self.layerMain().addPage(About(self),
                                  icon=SiGlobal.siui.iconpack.get("ic_fluent_info_filled"),
-                                 hint="关于", side="bottom")
+                                 hint="About me", side="bottom")
 
         self.layerMain().setPage(0)
 

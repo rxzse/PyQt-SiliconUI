@@ -61,8 +61,8 @@ class SiTitledWidgetGroup(SiDenseVContainer):
 
     def addTitle(self, title):
         """
-        添加新标题，这将创建一个标题组件并添加到自身中
-        :param title: 标题文字
+        Add a new title, this will create a title component and add it to itself
+        :param title: Title Text
         """
         if len(self.widgets_top) > 0:
             self.addPlaceholder(16)

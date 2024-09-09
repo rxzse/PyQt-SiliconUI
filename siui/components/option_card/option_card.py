@@ -15,17 +15,17 @@ class SiOptionCardLinear(SiWidget):
         self.panel = SiLabel(self)
         self.panel.setFixedStyleSheet(f"background-color:{SiGlobal.siui.colors['INTERFACE_BG_C']}; border-radius:4px")
 
-        # 设定最小高度
+        # Set minimum height
         self.setMinimumHeight(80)
 
-        # 创建整体容器
+        # Tạo một Container nguyên khối
         self.container = SiDenseHContainer(self)
         self.container.setSpacing(0)
         self.container.setAlignment(Qt.AlignCenter)
         self.container.setAdjustWidgetsSize(True)
 
-        # 开始从左到右构建所需控件
-        # svg图标
+        # Start building the controls you want from left to right
+        # svg icon
         self.svg_icon = SiSvgLabel(self)
         self.svg_icon.setSvgSize(24, 24)
         self.svg_icon.resize(80, 80)
@@ -53,9 +53,9 @@ class SiOptionCardLinear(SiWidget):
 
     def setTitle(self, title, subtitle=""):
         """
-        为选项卡设置文字
-        :param title: 选项卡标题
-        :param subtitle: 选项卡副标题
+        Set text for the tab
+        :param title: Tab Title
+        :param subtitle: Tab Subtitle
         :return:
         """
         # 根据是否有副标题，设置两种文字显示方式
@@ -70,20 +70,20 @@ class SiOptionCardLinear(SiWidget):
         self.adjustSize()
 
     def setText(self, text: str):
-        raise AttributeError("请使用 setTitle 方法设置选项卡文字")
+        raise AttributeError("Please use the setTitle method to set the tab text")
 
     def load(self, path_or_data):
         """
-        加载图标
-        :param path_or_data: svg 文件路径或 svg 数据
+        Loading Icon
+        :param path_or_data: svg file path or svg data
         :return:
         """
         self.svg_icon.load(path_or_data)
 
     def addWidget(self, widget):
         """
-        添加控件于选项卡右侧，这将改变控件的父对象
-        :param widget: 控件
+        Add a control to the right of the tab, this will change the parent of the control
+        :param widget: control
         :return:
         """
         self.widgets_container.addWidget(widget, "right")
@@ -110,7 +110,7 @@ class SiOptionCardLinear(SiWidget):
 
 class SiOptionCardPlane(ABCSiOptionCardPlane):
     """
-    平面式选项卡。相较于其抽象类，此类提供
+    A flat tab. Compared to its abstract class, this class provides
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -132,8 +132,8 @@ class SiOptionCardPlane(ABCSiOptionCardPlane):
 
     def setTitle(self, text: str):
         """
-        设置标题
-        :param text: 标题
+        Set Title
+        :param text: title
         :return:
         """
         self.title.setText(text)
